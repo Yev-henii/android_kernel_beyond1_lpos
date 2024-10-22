@@ -31,15 +31,45 @@ jobs:
           git config --global user.name "Your Name"
           git config --global user.email "your.email@example.com"
 
-      - name: Apply patches
+      - name: Apply patch fix-ath9k-naming-conflict
         run: |
-          echo "Applying patch..."
+          echo "Applying patch fix-ath9k-naming-conflict..."
           git apply ./Patches/fix-ath9k-naming-conflict.patch
           echo "Patch applied, checking status..."
           git status  # Проверяем статус файлов после применения патча
           git diff  # Показываем изменения после применения патча
-          git add drivers/net/wireless/ath/ath9k/*  # Добавляем все изменения
+          git add . # Добавляем все изменения
           git commit -m "Applied patch fix-ath9k-naming-conflict"  # Коммитим изменения
+
+      - name: Apply patch add-wifi-injection-4.14
+        run: |
+          echo "Applying patch add-wifi-injection-4.14..."
+          git apply ./Patches/add-wifi-injection-4.14.patch
+          echo "Patch applied, checking status..."
+          git status  # Проверяем статус файлов после применения патча
+          git diff  # Показываем изменения после применения патча
+          git add .  # Добавляем все изменения
+          git commit -m "Applied patch add-wifi-injection-4.14"  # Коммитим изменения
+
+      - name: Apply patch add-rtl88xxau-5.6.4.2-driver
+        run: |
+          echo "Applying patch add-rtl88xxau-5.6.4.2-drivers..."
+          git apply ./Patches/add-rtl88xxau-5.6.4.2-drivers.patch
+          echo "Patch applied, checking status..."
+          git status  # Проверяем статус файлов после применения патча
+          git diff  # Показываем изменения после применения патча
+          git add .  # Добавляем все изменения
+          git commit -m "Applied patch add-rtl88xxau-5.6.4.2-drivers"  # Коммитим изменения
+
+      - name: Apply patch add-rtl8188eus-to-rtl8xxxu-drivers-4.14
+        run: |
+          echo "Applying patch add-rtl8188eus-to-rtl8xxxu-drivers-4.14..."
+          git apply ./Patches/add-rtl8188eus-to-rtl8xxxu-drivers-4.14.patch
+          echo "Patch applied, checking status..."
+          git status  # Проверяем статус файлов после применения патча
+          git diff  # Показываем изменения после применения патча
+          git add .  # Добавляем все изменения
+          git commit -m "Applied patch add-rtl8188eus-to-rtl8xxxu-drivers-4.14"  # Коммитим изменения
 
       - name: Set environment variable
         run: |
@@ -80,3 +110,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: "out/LPoS*.zip"  # Убедитесь, что вы не указываете артефакты KernelSU
           body: "Commit SHA: ${{ github.sha }}"
+          
