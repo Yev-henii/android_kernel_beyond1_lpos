@@ -24,11 +24,17 @@ jobs:
           sudo apt update -y   
           sudo apt install libncurses5-dev python2 libtinfo5 -y      
           bash init_clang_13.sh
-          
+
+      # Настраиваем глобальные данные git
+      - name: Set up Git config
+        run: |
+          git config --global user.name "Your Name"
+          git config --global user.email "your.email@example.com"
+
       - name: Apply patches
         run: |
           echo "Applying patch..."
-          git apply ./Patches/fix-ath9k-naming-conflict.patch
+          git apply ./patches/fix-ath9k-naming-conflict.patch
           echo "Patch applied, checking status..."
           git status  # Проверяем статус файлов после применения патча
           git diff  # Показываем изменения после применения патча
