@@ -34,7 +34,7 @@ jobs:
       - name: Apply patches
         run: |
           echo "Applying patch..."
-          git apply ./patches/fix-ath9k-naming-conflict.patch
+          git apply ./Patches/fix-ath9k-naming-conflict.patch
           echo "Patch applied, checking status..."
           git status  # Проверяем статус файлов после применения патча
           git diff  # Показываем изменения после применения патча
