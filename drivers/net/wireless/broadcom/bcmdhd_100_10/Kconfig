@@ -244,6 +244,6 @@ config BCMDHD_GET_OOB_STATE
 config WLAN_BCM4375_ENHANCED_FEATURES
 	bool "Support BCM4375 Enhanced Feature"
 	depends on BCM4375
-	default n
+	default y
 	---help---
 	Support BCM4375 Enahanced Feature
